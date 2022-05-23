@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
@@ -13,7 +14,8 @@ import javax.persistence.ManyToMany;
 public class User {
 
 	@Id
-	private int Id;
+	@GeneratedValue
+	private int id;
 	private String firstName;
 	private String lastName;
 	private String email;
@@ -31,7 +33,7 @@ public class User {
 	public User(int id, String firstName, String lastName, String email, String username, String password,
 			List<Hero> favouriteCharacters) {
 		super();
-		Id = id;
+		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
@@ -44,7 +46,7 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [Id=" + Id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
+		return "User [Id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
 				+ ", username=" + username + ", password=" + password + "]";
 	}
 
@@ -53,7 +55,7 @@ public class User {
 	public int hashCode() {
 		final int prime = 31;
 		int result = super.hashCode();
-		result = prime * result + Objects.hash(Id, email, firstName, lastName, password, username);
+		result = prime * result + Objects.hash(id, email, firstName, lastName, password, username);
 		return result;
 	}
 
@@ -67,18 +69,18 @@ public class User {
 		if (getClass() != obj.getClass())
 			return false;
 		User other = (User) obj;
-		return Id == other.Id && Objects.equals(email, other.email) && Objects.equals(firstName, other.firstName)
+		return id == other.id && Objects.equals(email, other.email) && Objects.equals(firstName, other.firstName)
 				&& Objects.equals(lastName, other.lastName) && Objects.equals(password, other.password)
 				&& Objects.equals(username, other.username);
 	}
 
 
 	public int getId() {
-		return Id;
+		return id;
 	}
 
 	public void setId(int id) {
-		Id = id;
+		id = id;
 	}
 
 	public String getFirstName() {

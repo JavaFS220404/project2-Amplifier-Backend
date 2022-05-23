@@ -19,10 +19,14 @@ public class Hero {
 	private String name;
 	private PowerStats powerStats;
 	@ManyToOne
-	@JoinColumn(name="Id")
+	@JoinColumn(name="id")
 	private User creator;
 	private boolean isPublic;
 	
+	public Hero() {
+		super();
+	}
+
 	Hero(int id, String name, PowerStats powerStats, User creator, boolean isPublic) {
 		this.id = id;
 		this.name = name;
