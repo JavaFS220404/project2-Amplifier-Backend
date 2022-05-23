@@ -5,11 +5,12 @@ import java.util.Objects;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 
 @Entity
 
-public class User extends AbstractUser {
+public class User {
 
 	@Id
 	private int Id;
@@ -19,6 +20,7 @@ public class User extends AbstractUser {
 	private String username;
 	private String password;
 	@ManyToMany
+	@JoinColumn(name="characterId")
 	private List<Hero> favouriteCharacters;
 
 	public User() {
