@@ -31,9 +31,9 @@ private HeroDAO heroDao;
 		return null;
 	}
 	
-	public Hero addOrUpdateHero (Hero here) {
-		Hero hero = heroDao.save(here); 
-		return hero;
+	public Hero addOrUpdateHero (Hero hero) {
+		Hero dbhero = heroDao.save(hero); 
+		return dbhero;
 	}
 	
 	public void destroyHero(int id) {
