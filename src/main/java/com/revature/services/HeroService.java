@@ -31,8 +31,8 @@ private HeroDAO heroDao;
 		return null;
 	}
 	
-	public Hero addOrUpdateHero (Hero trainer) {
-		Hero hero = heroDao.save(trainer); 
+	public Hero addOrUpdateHero (Hero here) {
+		Hero hero = heroDao.save(here); 
 		return hero;
 	}
 	
