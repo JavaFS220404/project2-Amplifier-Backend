@@ -8,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
@@ -16,7 +17,8 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 @Table(name="characters")
 public class Hero {
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator ="hero_seq_gen")
+	@SequenceGenerator(name = "hero_seq_gen", initialValue = 901)
 	private int id;
 	private String name;
 	private int intelligence;
@@ -29,6 +31,7 @@ public class Hero {
 	@JsonBackReference
 	private User creator;
 	private boolean isPublic;
+	
 	public Hero(int id, String name, int intelligence, int strength, int speed, int durability, int power, int combat,
 			User creator, boolean isPublic) {
 		super();

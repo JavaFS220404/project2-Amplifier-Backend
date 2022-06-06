@@ -2,6 +2,8 @@ package com.revature.controllers;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -53,16 +55,30 @@ public class HeroController {
 	}
 
 	@PostMapping
-	public ResponseEntity<Hero> newHero(@RequestBody Hero hero) {
-		heroService.addOrUpdateHero(hero);
-		return ResponseEntity.status(HttpStatus.CREATED).build();
+	public ResponseEntity<Hero> newHero(@RequestBody Hero hero, HttpSession session) {
+		
+		if(session.getAttribute("logged in")!=null&&(Boolean)session.getAttribute("logged in")) {
+			User user = (User)session.getAttribute("user");
+			System.out.println(hero.isPublic());
+			heroService.addHero(hero,user);
+			return ResponseEntity.status(HttpStatus.CREATED).build();
+		}
+		return ResponseEntity.status(403).build();
+		
 	}
 
+	/*  for updateHero new method needs to be added in Service layer
 	@PutMapping
-	public ResponseEntity<Hero> updateHero(@RequestBody Hero hero) {
-		heroService.addOrUpdateHero(hero);
-		return ResponseEntity.status(HttpStatus.ACCEPTED).build();
+	public ResponseEntity<Hero> updateHero(@RequestBody Hero hero, HttpSession session) {
+		if(session.getAttribute("logged in")!=null&&(Boolean)session.getAttribute("logged in")) {
+			User user = (User)session.getAttribute("user");
+			
+			heroService.updateHero(hero,user);
+			return ResponseEntity.status(HttpStatus.ACCEPTED).build();
+		}
+		return ResponseEntity.status(403).build();
 	}
+	*/
 
 	@DeleteMapping
 	public ResponseEntity<Hero> deleteHero(@PathVariable("id") int id) {

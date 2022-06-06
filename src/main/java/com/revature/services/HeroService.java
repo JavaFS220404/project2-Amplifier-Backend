@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.revature.models.Hero;
+import com.revature.models.User;
 import com.revature.repositories.HeroDAO;
 
 @Service
@@ -40,7 +41,9 @@ public class HeroService {
 		return null;
 	}
 
-	public Hero addOrUpdateHero(Hero hero) {
+	public Hero addHero(Hero hero,User user) {
+		hero.setCreator(user);
+		hero.setId(0);
 		Hero dbhero = heroDao.save(hero);
 		return dbhero;
 	}
