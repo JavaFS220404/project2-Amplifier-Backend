@@ -59,7 +59,6 @@ public class HeroController {
 		
 		if(session.getAttribute("logged in")!=null&&(Boolean)session.getAttribute("logged in")) {
 			User user = (User)session.getAttribute("user");
-			System.out.println(hero.isPublic());
 			heroService.addHero(hero,user);
 			return ResponseEntity.status(HttpStatus.CREATED).build();
 		}

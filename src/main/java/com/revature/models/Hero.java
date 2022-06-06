@@ -116,10 +116,10 @@ public class Hero {
 	public void setCreator(User creator) {
 		this.creator = creator;
 	}
-	public boolean isPublic() {
+	public boolean getIsPublic() {
 		return isPublic;
 	}
-	public void setPublic(boolean isPublic) {
+	public void setIsPublic(boolean isPublic) {
 		this.isPublic = isPublic;
 	}
 	@Override
