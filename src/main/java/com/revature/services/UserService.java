@@ -29,8 +29,8 @@ public class UserService {
         return null;
     }
     
-    public User getUserByUserName(String userName) {
-        Optional<User> opt = userDao.findByUserName(userName);
+    public User getUserByUsername(String username) {
+        Optional<User> opt = userDao.findByUsername(username);
         if(opt.isPresent()) {
             return opt.get();
         }
@@ -44,7 +44,7 @@ public class UserService {
     }
     
     public User login(User attempt) {
-		Optional<User> opt = userDao.findByUserName(attempt.getUsername());
+		Optional<User> opt = userDao.findByUsername(attempt.getUsername());
 		if(opt.isPresent()) {
 			User dbUser = opt.get();
 			if(dbUser.getPassword().equals(attempt.getPassword())) {

@@ -2,8 +2,9 @@ package com.revature.models;
 
 import java.util.Objects;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -15,13 +16,11 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 @Table(name="characters")
 public class Hero {
 	@Id
-	@Column(name="characterId")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
-	@Column(name="characterName")
 	private String name;
 	private PowerStats powerStats;
 	@ManyToOne
-	@JoinColumn(name="id")
 	@JsonBackReference
 	private User creator;
 	private boolean isPublic;
@@ -71,7 +70,7 @@ public class Hero {
 	
 	@Override
 	public int hashCode() {
-		return Objects.hash(creator, id, isPublic, name, powerStats);
+		return Objects.hash(creator, id, isPublic, name);
 	}
 
 	@Override
@@ -89,7 +88,7 @@ public class Hero {
 
 	@Override
 	public String toString() {
-		return "Hero [id=" + id + ", name=" + name + ", powerStats=" + powerStats + ", creator=" + creator
+		return "Hero [id=" + id + ", name=" + name + ", powerStats=" + powerStats +  ", creator=" + creator
 				+ ", isPublic=" + isPublic + "]";
 	}
 }

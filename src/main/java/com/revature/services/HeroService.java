@@ -4,10 +4,12 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.revature.models.Hero;
 import com.revature.repositories.HeroDAO;
 
+@Service
 public class HeroService {
 
 	private HeroDAO heroDao;
@@ -31,7 +33,7 @@ public class HeroService {
 	}
 
 	public Hero findByHeroName(String heroname) {
-		Optional<Hero> opt = heroDao.findByHeroName(heroname);
+		Optional<Hero> opt = heroDao.findByName(heroname);
 		if (opt.isPresent()) {
 			return opt.get();
 		}

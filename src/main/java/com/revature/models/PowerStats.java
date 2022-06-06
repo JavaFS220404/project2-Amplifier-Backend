@@ -2,8 +2,17 @@ package com.revature.models;
 
 import java.util.Objects;
 
-public class PowerStats {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
+@Entity
+public class PowerStats {
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private int id;
 	private int intelligence;
 	private int strength;
 	private int speed;
@@ -11,7 +20,8 @@ public class PowerStats {
 	private int power;
 	private int combat;
 	
-	PowerStats(int intelligence, int strength, int speed, int durability, int power, int combat) {
+	public PowerStats(int intelligence, int strength, int speed, int durability, int power, int combat) {
+		super();
 		this.intelligence = intelligence;
 		this.strength = strength;
 		this.speed = speed;
@@ -19,7 +29,19 @@ public class PowerStats {
 		this.power = power;
 		this.combat = combat;
 	}
-
+	public PowerStats() {
+		super();
+	}
+	public PowerStats(int id, int intelligence, int strength, int speed, int durability, int power, int combat) {
+		super();
+		this.id = id;
+		this.intelligence = intelligence;
+		this.strength = strength;
+		this.speed = speed;
+		this.durability = durability;
+		this.power = power;
+		this.combat = combat;
+	}
 	public int getIntelligence() {
 		return intelligence;
 	}

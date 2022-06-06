@@ -8,6 +8,6 @@ import com.revature.models.Hero;
 
 public interface HeroDAO extends JpaRepository<Hero, Integer> {
 
-	Optional<Hero> findByHeroName(String heroname);
+	Optional<Hero> findByName(String heroName);
 
 }
