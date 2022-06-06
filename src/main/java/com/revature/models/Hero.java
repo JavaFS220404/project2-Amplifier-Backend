@@ -19,24 +19,46 @@ public class Hero {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	private String name;
-	private PowerStats powerStats;
+	private int intelligence;
+	private int strength;
+	private int speed;
+	private int durability;
+	private int power;
+	private int combat;
 	@ManyToOne
 	@JsonBackReference
 	private User creator;
 	private boolean isPublic;
-	
-	public Hero() {
+	public Hero(int id, String name, int intelligence, int strength, int speed, int durability, int power, int combat,
+			User creator, boolean isPublic) {
 		super();
-	}
-
-	Hero(int id, String name, PowerStats powerStats, User creator, boolean isPublic) {
 		this.id = id;
 		this.name = name;
-		this.powerStats = powerStats;
+		this.intelligence = intelligence;
+		this.strength = strength;
+		this.speed = speed;
+		this.durability = durability;
+		this.power = power;
+		this.combat = combat;
 		this.creator = creator;
 		this.isPublic = isPublic;
 	}
-	
+	public Hero() {
+		super();
+	}
+	public Hero(String name, int intelligence, int strength, int speed, int durability, int power, int combat,
+			User creator, boolean isPublic) {
+		super();
+		this.name = name;
+		this.intelligence = intelligence;
+		this.strength = strength;
+		this.speed = speed;
+		this.durability = durability;
+		this.power = power;
+		this.combat = combat;
+		this.creator = creator;
+		this.isPublic = isPublic;
+	}
 	public int getId() {
 		return id;
 	}
@@ -49,11 +71,41 @@ public class Hero {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public PowerStats getPowerStats() {
-		return powerStats;
+	public int getIntelligence() {
+		return intelligence;
 	}
-	public void setPowerStats(PowerStats powerStats) {
-		this.powerStats = powerStats;
+	public void setIntelligence(int intelligence) {
+		this.intelligence = intelligence;
+	}
+	public int getStrength() {
+		return strength;
+	}
+	public void setStrength(int strength) {
+		this.strength = strength;
+	}
+	public int getSpeed() {
+		return speed;
+	}
+	public void setSpeed(int speed) {
+		this.speed = speed;
+	}
+	public int getDurability() {
+		return durability;
+	}
+	public void setDurability(int durability) {
+		this.durability = durability;
+	}
+	public int getPower() {
+		return power;
+	}
+	public void setPower(int power) {
+		this.power = power;
+	}
+	public int getCombat() {
+		return combat;
+	}
+	public void setCombat(int combat) {
+		this.combat = combat;
 	}
 	public User getCreator() {
 		return creator;
@@ -67,12 +119,10 @@ public class Hero {
 	public void setPublic(boolean isPublic) {
 		this.isPublic = isPublic;
 	}
-	
 	@Override
 	public int hashCode() {
-		return Objects.hash(creator, id, isPublic, name);
+		return Objects.hash(combat, creator, durability, id, intelligence, isPublic, name, power, speed, strength);
 	}
-
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -82,13 +132,16 @@ public class Hero {
 		if (getClass() != obj.getClass())
 			return false;
 		Hero other = (Hero) obj;
-		return Objects.equals(creator, other.creator) && id == other.id && isPublic == other.isPublic
-				&& Objects.equals(name, other.name) && Objects.equals(powerStats, other.powerStats);
+		return combat == other.combat && Objects.equals(creator, other.creator) && durability == other.durability
+				&& id == other.id && intelligence == other.intelligence && isPublic == other.isPublic
+				&& Objects.equals(name, other.name) && power == other.power && speed == other.speed
+				&& strength == other.strength;
 	}
-
 	@Override
 	public String toString() {
-		return "Hero [id=" + id + ", name=" + name + ", powerStats=" + powerStats +  ", creator=" + creator
-				+ ", isPublic=" + isPublic + "]";
+		return "Hero [id=" + id + ", name=" + name + ", intelligence=" + intelligence + ", strength=" + strength
+				+ ", speed=" + speed + ", durability=" + durability + ", power=" + power + ", combat=" + combat
+				+ ", creator=" + creator + ", isPublic=" + isPublic + "]";
 	}
+	
 }
