@@ -9,6 +9,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 @Table(name="characters")
 public class Hero {
@@ -20,6 +22,7 @@ public class Hero {
 	private PowerStats powerStats;
 	@ManyToOne
 	@JoinColumn(name="id")
+	@JsonBackReference
 	private User creator;
 	private boolean isPublic;
 	

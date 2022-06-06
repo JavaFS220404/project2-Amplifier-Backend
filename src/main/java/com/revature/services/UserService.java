@@ -43,6 +43,17 @@ public class UserService {
 
     }
     
+    public User login(User attempt) {
+		Optional<User> opt = userDao.findByUserName(attempt.getUsername());
+		if(opt.isPresent()) {
+			User dbUser = opt.get();
+			if(dbUser.getPassword().equals(attempt.getPassword())) {
+				return dbUser;
+			}
+		}
+		return null;
+	}
+    
     public void deleteUser(int id) {
         User user = getUserById(id);
         userDao.delete(user);
