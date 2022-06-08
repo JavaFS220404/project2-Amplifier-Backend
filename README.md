@@ -18,5 +18,5 @@ Users can:
 ## Getting Started
 
 ## Usage
-![Battle Simulator](https://user-images.githubusercontent.com/68554653/172644264-0c6d56d6-75fb-48d8-bad9-607a06d2c778.jpeg)
+<img width="350" alt="Battle Simulator" src="https://user-images.githubusercontent.com/68554653/172644718-e2fd4cc5-cdd8-49f5-baf3-261fc1ee778b.png">
 ## Contributors
