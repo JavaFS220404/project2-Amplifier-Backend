@@ -11,7 +11,7 @@ import com.revature.repositories.UserDAO;
 
 @Service
 public class UserService {
-    private UserDAO userDao;
+    protected UserDAO userDao;
     @Autowired
     public UserService(UserDAO userDao) {
         super();

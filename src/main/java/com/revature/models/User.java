@@ -37,6 +37,12 @@ public class User {
 		super();
 	}
 	
+	public User(String username, String password) {
+		super();
+		this.username = username;
+		this.password = password;
+	}
+	
 
 	public User(int id, String firstName, String lastName, String email, String username, String password,
 			List<Hero> favouriteCharacters) {
