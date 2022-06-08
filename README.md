@@ -18,6 +18,8 @@ Users can:
 ## Getting Started
 
 ## Usage
+# Use Case Diagram
 <img width="350" alt="Battle Simulator" src="https://user-images.githubusercontent.com/68554653/172644718-e2fd4cc5-cdd8-49f5-baf3-261fc1ee778b.png">
-<img width="310" alt="ERD" src="https://user-images.githubusercontent.com/68554653/172648292-a0d2a93e-4488-4670-a2b9-ccc0c8047467.png">
+# ER Diagram
+<img width="407" alt="ERD" src="https://user-images.githubusercontent.com/68554653/172650113-493b309a-8b8f-4d8b-b74c-24cb93bd4ef2.png">
 ## Contributors
