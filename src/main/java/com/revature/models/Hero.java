@@ -29,10 +29,9 @@ public class Hero {
 	@ManyToOne
 	@JsonBackReference
 	private User creator;
-	private boolean isPublic;
-	
+
 	public Hero(int id, String name, int intelligence, int strength, int speed, int durability, int power, int combat,
-			User creator, boolean isPublic) {
+			User creator) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -43,13 +42,12 @@ public class Hero {
 		this.power = power;
 		this.combat = combat;
 		this.creator = creator;
-		this.isPublic = isPublic;
 	}
 	public Hero() {
 		super();
 	}
 	public Hero(String name, int intelligence, int strength, int speed, int durability, int power, int combat,
-			User creator, boolean isPublic) {
+			User creator) {
 		super();
 		this.name = name;
 		this.intelligence = intelligence;
@@ -59,7 +57,6 @@ public class Hero {
 		this.power = power;
 		this.combat = combat;
 		this.creator = creator;
-		this.isPublic = isPublic;
 	}
 	public int getId() {
 		return id;
@@ -115,15 +112,15 @@ public class Hero {
 	public void setCreator(User creator) {
 		this.creator = creator;
 	}
-	public boolean getIsPublic() {
-		return isPublic;
-	}
-	public void setIsPublic(boolean isPublic) {
-		this.isPublic = isPublic;
+	@Override
+	public String toString() {
+		return "Hero [id=" + id + ", name=" + name + ", intelligence=" + intelligence + ", strength=" + strength
+				+ ", speed=" + speed + ", durability=" + durability + ", power=" + power + ", combat=" + combat
+				+ ", creator=" + creator + "]";
 	}
 	@Override
 	public int hashCode() {
-		return Objects.hash(combat, creator, durability, id, intelligence, isPublic, name, power, speed, strength);
+		return Objects.hash(combat, creator, durability, id, intelligence, name, power, speed, strength);
 	}
 	@Override
 	public boolean equals(Object obj) {
@@ -135,15 +132,7 @@ public class Hero {
 			return false;
 		Hero other = (Hero) obj;
 		return combat == other.combat && Objects.equals(creator, other.creator) && durability == other.durability
-				&& id == other.id && intelligence == other.intelligence && isPublic == other.isPublic
-				&& Objects.equals(name, other.name) && power == other.power && speed == other.speed
-				&& strength == other.strength;
+				&& id == other.id && intelligence == other.intelligence && Objects.equals(name, other.name)
+				&& power == other.power && speed == other.speed && strength == other.strength;
 	}
-	@Override
-	public String toString() {
-		return "Hero [id=" + id + ", name=" + name + ", intelligence=" + intelligence + ", strength=" + strength
-				+ ", speed=" + speed + ", durability=" + durability + ", power=" + power + ", combat=" + combat
-				+ ", creator=" + creator + ", isPublic=" + isPublic + "]";
-	}
-	
 }
