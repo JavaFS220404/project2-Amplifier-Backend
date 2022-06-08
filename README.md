@@ -19,4 +19,5 @@ Users can:
 
 ## Usage
 <img width="350" alt="Battle Simulator" src="https://user-images.githubusercontent.com/68554653/172644718-e2fd4cc5-cdd8-49f5-baf3-261fc1ee778b.png">
+<img width="310" alt="ERD" src="https://user-images.githubusercontent.com/68554653/172648292-a0d2a93e-4488-4670-a2b9-ccc0c8047467.png">
 ## Contributors
