@@ -66,18 +66,18 @@ public class HeroController {
 		
 	}
 
-	/*  for updateHero new method needs to be added in Service layer
+
 	@PutMapping
 	public ResponseEntity<Hero> updateHero(@RequestBody Hero hero, HttpSession session) {
 		if(session.getAttribute("logged in")!=null&&(Boolean)session.getAttribute("logged in")) {
 			User user = (User)session.getAttribute("user");
 			
-			heroService.updateHero(hero,user);
+			heroService.addHero(hero, user);
 			return ResponseEntity.status(HttpStatus.ACCEPTED).build();
 		}
 		return ResponseEntity.status(403).build();
 	}
-	*/
+
 
 	@DeleteMapping
 	public ResponseEntity<Hero> deleteHero(@PathVariable("id") int id) {
