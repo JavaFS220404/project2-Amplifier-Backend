@@ -2,11 +2,12 @@ package com.revature.models;
 
 import java.util.Objects;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -19,6 +20,7 @@ public class Hero {
 	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator ="hero_seq_gen")
 	@SequenceGenerator(name = "hero_seq_gen", initialValue = 901)
 	private int id;
+	@Column(nullable=false)
 	private String name;
 	private int intelligence;
 	private int strength;
@@ -26,7 +28,7 @@ public class Hero {
 	private int durability;
 	private int power;
 	private int combat;
-	@ManyToOne
+	@OneToOne
 	@JsonBackReference
 	private User creator;
 

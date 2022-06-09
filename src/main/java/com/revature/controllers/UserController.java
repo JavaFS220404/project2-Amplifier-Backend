@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -47,7 +48,7 @@ public class UserController {
             return ResponseEntity.status(204).build();
         }
     }
-    
+   /* 
     @GetMapping("/{userName}")
     public ResponseEntity<User> getUserByUsername(@PathVariable("userName") String username) {
         User user = userService.getUserByUsername(username);
@@ -56,7 +57,7 @@ public class UserController {
         } else {
             return ResponseEntity.status(204).build();
         }
-    }
+    }*/
     
     @PostMapping("/register")
     public ResponseEntity<User> addUser(@RequestBody User user){
@@ -77,12 +78,16 @@ public class UserController {
 		}
 	}
     
-    @PutMapping
-    public ResponseEntity<User> updateUser(@RequestBody User user){
-        userService.addOrUpdate(user);
-        return ResponseEntity.status(202).build();
+	@PatchMapping("/{id}")
+    public ResponseEntity<User> updateUser(@PathVariable int id,@RequestBody int heroid, HttpSession session){
+		if(session.getAttribute("logged in")!=null&&(Boolean)session.getAttribute("logged in")) {
+			userService.Update(id,heroid);
+			return ResponseEntity.status(202).build();
+		}
+		return ResponseEntity.status(403).build();
     }
-    
+	
+	
     @DeleteMapping("/{id}")
     public ResponseEntity<User> deleteUser(@PathVariable("id") int id){
         userService.deleteUser(id);

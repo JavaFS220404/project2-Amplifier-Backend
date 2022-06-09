@@ -1,5 +1,6 @@
 package com.revature.models;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
@@ -28,10 +29,7 @@ public class User {
 	private String username;
 	@Column(nullable=false)
 	private String password;
-	@ManyToMany
-	@JoinColumn(name="characterId")
-	@JsonManagedReference
-	private List<Hero> favouriteCharacters;
+	private String favouriteCharacters;
 
 	public User() {
 		super();
@@ -45,7 +43,7 @@ public class User {
 	
 
 	public User(int id, String firstName, String lastName, String email, String username, String password,
-			List<Hero> favouriteCharacters) {
+			String favouriteCharacters) {
 		super();
 		this.id = id;
 		this.firstName = firstName;
@@ -56,38 +54,38 @@ public class User {
 		this.favouriteCharacters = favouriteCharacters;
 	}
 	
-
-
+	
 	@Override
 	public String toString() {
-		return "User [Id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
-				+ ", username=" + username + ", password=" + password + "]";
+		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
+				+ ", username=" + username + ", password=" + password + ", favouriteCharacters=" + favouriteCharacters
+				+ "]";
 	}
-
+	
+	
 
 	@Override
 	public int hashCode() {
-		final int prime = 31;
-		int result = super.hashCode();
-		result = prime * result + Objects.hash(id, email, firstName, lastName, password, username);
-		return result;
+		return Objects.hash(email, favouriteCharacters, firstName, id, lastName, password, username);
 	}
-
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
+		if (this == obj) {
 			return true;
-		if (!super.equals(obj))
+		}
+		if (obj == null) {
 			return false;
-		if (getClass() != obj.getClass())
+		}
+		if (getClass() != obj.getClass()) {
 			return false;
+		}
 		User other = (User) obj;
-		return id == other.id && Objects.equals(email, other.email) && Objects.equals(firstName, other.firstName)
+		return Objects.equals(email, other.email) && Objects.equals(favouriteCharacters, other.favouriteCharacters)
+				&& Objects.equals(firstName, other.firstName) && id == other.id
 				&& Objects.equals(lastName, other.lastName) && Objects.equals(password, other.password)
 				&& Objects.equals(username, other.username);
 	}
-
 
 	public int getId() {
 		return id;
@@ -137,11 +135,11 @@ public class User {
 		this.password = password;
 	}
 
-	public List<Hero> getFavouriteCharacters() {
+	public String getFavouriteCharacters() {
 		return favouriteCharacters;
 	}
 
-	public void setFavouriteCharacters(List<Hero> favouriteCharacters) {
+	public void setFavouriteCharacters(String favouriteCharacters) {
 		this.favouriteCharacters = favouriteCharacters;
 	}
 	

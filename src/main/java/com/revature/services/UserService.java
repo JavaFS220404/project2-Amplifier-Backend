@@ -5,7 +5,6 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.revature.models.User;
 import com.revature.repositories.UserDAO;
 
@@ -40,6 +39,27 @@ public class UserService {
     public User addOrUpdate(User user) {
         User dbUser = userDao.save(user);
         return dbUser;
+
+    }
+    public User Update(int userId, int heroId) {
+    	
+    	 Optional<User> opt = userDao.findById(userId);
+    	 
+         if(opt.isPresent()) {
+        	 User dbUser = opt.get();
+        	 String newList = dbUser.getFavouriteCharacters();
+        	 if (newList==null) {
+        		 newList = String.valueOf(heroId);
+        	 }else {
+        		 newList = newList + "," + heroId;
+        	 }
+        	 dbUser.setFavouriteCharacters(newList);
+        	 userDao.save(dbUser);
+        	 return dbUser;
+         }	
+         
+         return null;
+         
 
     }
     
