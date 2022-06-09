@@ -40,12 +40,29 @@ public class HeroService {
 		}
 		return null;
 	}
+	
+	public Hero findByCreator(User user) {
+		Optional<Hero> opt = heroDao.findByCreator(user);
+		if (opt.isPresent()) {
+			return opt.get();
+		}
+		return null;
+	}
 
 	public Hero addHero(Hero hero,User user) {
 		hero.setCreator(user);
 		hero.setId(0);
 		Hero dbhero = heroDao.save(hero);
 		return dbhero;
+	}
+	
+	public Hero updateHero(Hero hero, User user) {
+		Optional<Hero> opt = heroDao.findByCreator(user);
+		if (opt.isPresent()) {
+			heroDao.save(hero);
+			return opt.get();
+		}
+		return null;
 	}
 
 	public void deleteHero(int id) {

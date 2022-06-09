@@ -66,13 +66,12 @@ public class HeroController {
 		
 	}
 
-
 	@PutMapping
 	public ResponseEntity<Hero> updateHero(@RequestBody Hero hero, HttpSession session) {
 		if(session.getAttribute("logged in")!=null&&(Boolean)session.getAttribute("logged in")) {
 			User user = (User)session.getAttribute("user");
 			
-			heroService.addHero(hero, user);
+			heroService.updateHero(hero, user);
 			return ResponseEntity.status(HttpStatus.ACCEPTED).build();
 		}
 		return ResponseEntity.status(403).build();
