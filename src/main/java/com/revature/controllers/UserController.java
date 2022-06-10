@@ -81,7 +81,7 @@ public class UserController {
 	@PatchMapping("/{id}")
     public ResponseEntity<User> updateUser(@PathVariable int id,@RequestBody int heroid, HttpSession session){
 		if(session.getAttribute("logged in")!=null&&(Boolean)session.getAttribute("logged in")) {
-			userService.Update(id,heroid);
+			userService.update(id,heroid);
 			return ResponseEntity.status(202).build();
 		}
 		return ResponseEntity.status(403).build();

@@ -41,7 +41,7 @@ public class UserService {
         return dbUser;
 
     }
-    public User Update(int userId, int heroId) {
+    public User update(int userId, int heroId) {
     	
     	 Optional<User> opt = userDao.findById(userId);
     	 
