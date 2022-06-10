@@ -41,7 +41,7 @@ public class HeroService {
 		return null;
 	}
 	
-	public Hero findByCreator(User user) {
+	public Hero findByCreator(User user) {	
 		Optional<Hero> opt = heroDao.findByCreator(user);
 		if (opt.isPresent()) {
 			return opt.get();
@@ -59,10 +59,13 @@ public class HeroService {
 	public Hero updateHero(Hero hero, User user) {
 		Optional<Hero> opt = heroDao.findByCreator(user);
 		if (opt.isPresent()) {
-			heroDao.save(hero);
-			return opt.get();
-		}
-		return null;
+			hero.setCreator(user);
+			System.out.println(hero);
+			return heroDao.save(hero);
+		}else
+			return null;
+		
+	
 	}
 
 	public void deleteHero(int id) {

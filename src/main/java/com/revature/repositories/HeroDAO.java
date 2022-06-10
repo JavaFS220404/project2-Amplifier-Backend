@@ -11,6 +11,6 @@ public interface HeroDAO extends JpaRepository<Hero, Integer> {
 
 	Optional<Hero> findByName(String heroName);
 	
-	Optional<Hero> findByCreator(User creator);
+	Optional<Hero> findByCreator(User user);
 
 }

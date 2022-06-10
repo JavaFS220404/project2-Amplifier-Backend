@@ -40,10 +40,16 @@ public class HeroController {
 	}
 
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<Hero> getHero(@PathVariable("id") int id) {
-		return ResponseEntity.status(HttpStatus.OK).body(heroService.findById(id));
+	public ResponseEntity<Hero> getHero(@PathVariable("id") int id, HttpSession session) {
+		if(session.getAttribute("logged in")!=null&&(Boolean)session.getAttribute("logged in")) {
+			User user = (User)session.getAttribute("user");
+			Hero hero = heroService.findByCreator(user);
+			return ResponseEntity.status(HttpStatus.OK).body(hero);
+		}
+		return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
 	}
 
+	/*
 	@GetMapping("/{heroname}")
 	public ResponseEntity<Hero> getByHeroName(@PathVariable("heroname") String heroname) {
 		Hero hero = heroService.findByHeroName(heroname);
@@ -53,14 +59,15 @@ public class HeroController {
 			return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
 		}
 	}
-
+*/
+	
 	@PostMapping
 	public ResponseEntity<Hero> newHero(@RequestBody Hero hero, HttpSession session) {
 		
 		if(session.getAttribute("logged in")!=null&&(Boolean)session.getAttribute("logged in")) {
 			User user = (User)session.getAttribute("user");
-			heroService.addHero(hero,user);
-			return ResponseEntity.status(HttpStatus.CREATED).build();
+			Hero dbhero = heroService.addHero(hero,user);
+			return ResponseEntity.status(HttpStatus.CREATED).body(dbhero);
 		}
 		return ResponseEntity.status(403).build();
 		
@@ -70,8 +77,7 @@ public class HeroController {
 	public ResponseEntity<Hero> updateHero(@RequestBody Hero hero, HttpSession session) {
 		if(session.getAttribute("logged in")!=null&&(Boolean)session.getAttribute("logged in")) {
 			User user = (User)session.getAttribute("user");
-			
-			heroService.updateHero(hero, user);
+			heroService.updateHero(hero,user);
 			return ResponseEntity.status(HttpStatus.ACCEPTED).build();
 		}
 		return ResponseEntity.status(403).build();
