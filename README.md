@@ -16,7 +16,7 @@ Users can:
 *	Let two random Heroes/Villains fight against each other
 
 ## Getting Started
-
+Link to frontend part: https://github.com/JavaFS220404/project2-Amplifier-Frontend
 ## Usage
 * Use Case Diagram
 <img width="350" alt="Battle Simulator" src="https://user-images.githubusercontent.com/68554653/172644718-e2fd4cc5-cdd8-49f5-baf3-261fc1ee778b.png">
