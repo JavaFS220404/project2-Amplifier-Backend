@@ -1,4 +1,4 @@
-## Getting Started
+# Getting Started
 Link to frontend part: https://github.com/JavaFS220404/project2-Amplifier-Frontend
 
 # Heroes and Villains Battle Simulator
